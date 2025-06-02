@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laralog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laralog
+  template:
+    metadata:
+      labels:
+        app: laralog
+    spec:
+      nodeSelector:
+        laralog: "true"
+      containers:
+        - name: laralog
+          image: laralog:latest
+          ports:
+            - containerPort: 9000
+          volumeMounts:
+            - name: laralog-volume
+              mountPath: /var/www/storage/logs/access.log
+              subPath: access.log
+      volumes:
+        - name: laralog-volume
+          persistentVolumeClaim:
+            claimName: laralog-pvc
