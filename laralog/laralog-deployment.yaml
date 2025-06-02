@@ -21,8 +21,8 @@ spec:
             - containerPort: 9000
           volumeMounts:
             - name: laralog-volume
-              mountPath: /var/www/storage/logs/access.log
-              subPath: access.log
+              mountPath: /var/www/storage/logs
+              subPath: logs
       volumes:
         - name: laralog-volume
           persistentVolumeClaim:
