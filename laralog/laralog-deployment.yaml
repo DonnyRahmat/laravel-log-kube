@@ -16,7 +16,7 @@ spec:
         laralog: "true"
       containers:
         - name: laralog
-          image: laralog:latest
+          image: modoraku/laralog:latest
           ports:
             - containerPort: 9000
           volumeMounts:
